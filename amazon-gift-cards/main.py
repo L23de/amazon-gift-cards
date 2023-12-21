@@ -62,6 +62,8 @@ for card, detail in cards.items():
 
         webdriver.ActionChains(driver).move_to_element(card_digit_text).click(card_digit_text).perform()
 
+        # May need to add a wait if card number needs to be confirmed
+
         # Set desired card as payment
         use_payment_button = driver.find_element(By.XPATH, "//span[@id='orderSummaryPrimaryActionBtn']")
         use_payment_button.click()
