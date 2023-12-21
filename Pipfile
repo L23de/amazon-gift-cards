@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 selenium = "*"
+pdfquery = "*"
+six = "*"
+pdfminer = "*"
+dateparser = "*"
 
 [dev-packages]
 
