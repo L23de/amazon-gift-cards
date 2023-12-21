@@ -1,9 +1,14 @@
-import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+
+import os
+import sys
+sys.path.append(os.path.abspath("."))
+
+from common import driver  # noqa: E402
 
 DEV = True
 
@@ -14,21 +19,8 @@ cards = {
 
 # Minimum is $1, should be a number (int or float)
 PURCHASE_AMOUNT = 1
-
-EDGE_BINARY_LOCATION = ""
-EDGE_USER_DATA_DIR = ""
-EDGE_BETA_LOCAL_STORE = ""
-
 AMAZON_PURCHASE_LINK = "https://www.amazon.com/gp/product/B086KKT3RX?ref_=gcui_b_e_rb_c_d"
 
-# Init WebDriver
-service = webdriver.EdgeService(executable_path="./msedgedriver.exe")
-options = webdriver.EdgeOptions()
-options.add_argument(f"user-data-dir={EDGE_USER_DATA_DIR}")
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
-options.binary_location= EDGE_BINARY_LOCATION
-
-driver = webdriver.Edge(options=options, service=service)
 
 for card, detail in cards.items():
     digits, runs = detail
